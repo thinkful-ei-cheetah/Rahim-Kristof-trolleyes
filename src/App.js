@@ -2,27 +2,21 @@ import React, { Component } from 'react';
 import List from './components/List';
 import './App.css';
 
-class App extends Component {
-  render() {
+const App=({store})=> {
+
+  let lists = store.lists.map(list=>{
+    return <List key={list.id} header={list.header} cards={list.cardIds} allCards={store.allCards}/>});
+  
     return (
-      <div className='App'>
-        <header className='App-header'>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          `
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
-        </header>
+    <main className="App">
+      <header className="App-header">
+        <h1>Trelloyes!</h1>
+      </header>
+      <div className="App-list">
+      {lists}
       </div>
-    );
-  }
+    </main>
+  );
 }
 
 export default App;
